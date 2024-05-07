@@ -70,12 +70,12 @@ function M.config()
     "cssls",
     "html",
     "tsserver",
-    "eslint",
-    "tsserver",
-    "pyright",
     "bashls",
     "jsonls",
     "yamlls",
+    "solargraph",
+    "gopls",
+    "gofmt"
   }
 
   local default_diagnostic_config = {
