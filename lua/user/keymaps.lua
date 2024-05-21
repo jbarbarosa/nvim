@@ -44,7 +44,7 @@ keymap({ "n", "x" }, "k", "gk", opts)
 keymap("n", "<leader>w", ":w<CR>", opts)
 
 -- dap
-keymap("n", "<leader>dd", "<cmd> lua require('dap-ui').toggle()<CR>", opts)
+keymap("n", "<leader>dd", "<cmd> lua require('dapui').toggle()<CR>", opts)
 keymap("n", "<leader>db", "<cmd> lua require('dap').toggle_breakpoint()<CR>", opts)
 keymap("n", "<leader>dn", "<cmd> lua require('dap').step_over()<CR>", opts)
 keymap("n", "<leader>di", "<cmd> lua require('dap').step_into()<CR>", opts)
