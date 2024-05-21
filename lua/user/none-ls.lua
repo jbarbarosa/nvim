@@ -25,6 +25,8 @@ function M.config()
       -- formatting.eslint,
       null_ls.builtins.completion.spell,
       null_ls.builtins.formatting.gofmt,
+      null_ls.builtins.diagnostics.rubocop,
+      null_ls.builtins.diagnostics.erb_lint,
       -- null_ls.builtins.completion.gofmt,
     },
    on_attach = function(client, bufnr)
