@@ -73,9 +73,11 @@ function M.config()
     "bashls",
     "jsonls",
     "yamlls",
-    "solargraph",
+    -- "solargraph",
+    "ruby_lsp",
     "gopls",
-    "gofmt"
+    "gofmt",
+    "jdtls"
   }
 
   local default_diagnostic_config = {
@@ -127,7 +129,9 @@ function M.config()
       require("neodev").setup {}
     end
 
+    -- if server ~= "jdtls" then -- jdtls is finnicky about its setup
     lspconfig[server].setup(opts)
+    -- end
   end
 end
 
