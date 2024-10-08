@@ -3,6 +3,10 @@ local jdtls = require('jdtls')
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ':p:h:t')
 local workspace_dir = vim.env.HOME .. '/jdtls-workspace/' .. project_name
 
+local java_path = vim.fn.system("asdf which java"):gsub("\n", "")  -- Remove trailing newline
+local jdk_path = java_path:match("(.*)/bin/java")
+print("Using JDK at: " .. jdk_path)
+
 -- Needed for debugging
 local bundles = {
   vim.fn.glob(vim.env.HOME .. '/.local/share/nvim/mason/share/java-debug-adapter/com.microsoft.java.debug.plugin.jar'),
@@ -44,7 +48,7 @@ local config = {
   settings = {
     java = {
       -- TODO Replace this with the absolute path to your main java version (JDK 17 or higher)
-      home = '/Library/Java/JavaVirtualMachines/temurin-17.jdk',
+      home = jdk_path,
       eclipse = {
         downloadSources = true,
       },
@@ -54,8 +58,8 @@ local config = {
         -- The runtime name parameters need to match specific Java execution environments.  See https://github.com/tamago324/nlsp-settings.nvim/blob/2a52e793d4f293c0e1d61ee5794e3ff62bfbbb5d/schemas/_generated/jdtls.json#L317-L334
         runtimes = {
           {
-            name = "JavaSE-17",
-            path = "/Library/Java/JavaVirtualMachines/temurin-17.jdk",
+            name = "JavaSE-21",
+            path = jdk_path,
           },
         }
       },
