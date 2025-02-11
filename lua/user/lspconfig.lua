@@ -75,7 +75,8 @@ function M.config()
     "yamlls",
     "ruby_lsp",
     "gopls",
-    "gofmt"
+    "gofmt",
+    "jdtls"
   }
 
   local default_diagnostic_config = {
