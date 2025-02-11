@@ -46,7 +46,6 @@ function M.config()
 
   vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
   vim.api.nvim_set_hl(0, "CmpItemKindTabnine", { fg = "#CA42F0" })
-  vim.api.nvim_set_hl(0, "CmpItemKindEmoji", { fg = "#FDE030" })
 
   local check_backspace = function()
     local col = vim.fn.col "." - 1
@@ -120,11 +119,6 @@ function M.config()
           emoji = "",
         })[entry.source.name]
 
-        if entry.source.name == "emoji" then
-          vim_item.kind = icons.misc.Smiley
-          vim_item.kind_hl_group = "CmpItemKindEmoji"
-        end
-
         if entry.source.name == "cmp_tabnine" then
           vim_item.kind = icons.misc.Robot
           vim_item.kind_hl_group = "CmpItemKindTabnine"
@@ -142,7 +136,6 @@ function M.config()
       { name = "buffer" },
       { name = "path" },
       { name = "calc" },
-      { name = "emoji" },
     },
     confirm_opts = {
       behavior = cmp.ConfirmBehavior.Replace,
