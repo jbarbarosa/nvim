@@ -23,7 +23,7 @@ M.on_attach = function(client, bufnr)
   lsp_keymaps(bufnr)
 
   if client.supports_method "textDocument/inlayHint" then
-    vim.lsp.inlay_hint.enable(bufnr, true)
+    vim.lsp.inlay_hint.enable(true)
   end
 end
 
@@ -35,7 +35,7 @@ end
 
 M.toggle_inlay_hints = function()
   local bufnr = vim.api.nvim_get_current_buf()
-  vim.lsp.inlay_hint.enable(bufnr, not vim.lsp.inlay_hint.is_enabled(bufnr))
+  vim.lsp.inlay_hint.enable(true)
 end
 
 function M.config()
@@ -73,11 +73,9 @@ function M.config()
     "bashls",
     "jsonls",
     "yamlls",
-    -- "solargraph",
     "ruby_lsp",
     "gopls",
-    "gofmt",
-    "jdtls"
+    "gofmt"
   }
 
   local default_diagnostic_config = {
@@ -129,9 +127,7 @@ function M.config()
       require("neodev").setup {}
     end
 
-    -- if server ~= "jdtls" then -- jdtls is finnicky about its setup
     lspconfig[server].setup(opts)
-    -- end
   end
 end
 
