@@ -76,7 +76,6 @@ function M.config()
     "ruby_lsp",
     "gopls",
     "gofmt",
-    "jdtls"
   }
 
   local default_diagnostic_config = {
