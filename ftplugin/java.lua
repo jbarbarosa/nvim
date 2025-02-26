@@ -18,7 +18,13 @@ local bundles = {
 }
 
 -- Needed for running/debugging unit tests
-vim.list_extend(bundles, vim.split(vim.fn.glob(home .. "/.local/share/nvim/mason/share/java-test/com.microsoft.java.test.plugin.jar", true), "\n"))
+vim.list_extend(
+  bundles,
+  vim.split(
+    vim.fn.glob(home .. "/.local/share/nvim/mason/share/java-test/com.microsoft.java.test.plugin.jar", true),
+    "\n"
+  )
+)
 
 -- See `:help vim.lsp.start_client` for an overview of the supported `config` options.
 local config = {
@@ -144,6 +150,7 @@ config["on_attach"] = function(client, bufnr)
   keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
   keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 
+  client.server_capabilities.semanticTokensProvider = nil
   jdtls.setup_dap { config_overrides = { hotcodereplace = "auto" } }
   require("jdtls.dap").setup_dap_main_class_configs()
 end
