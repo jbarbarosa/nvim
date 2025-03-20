@@ -20,6 +20,8 @@ function M.config()
     ["<leader>td"] = { "<cmd>lua require('neotest').run.run({strategy = 'dap'})<cr>", "Debug Test" },
     ["<leader>ts"] = { "<cmd>lua require('neotest').run.stop()<cr>", "Test Stop" },
     ["<leader>ta"] = { "<cmd>lua require('neotest').run.attach()<cr>", "Attach Test" },
+    ["<leader>tp"] = { "<cmd>Neotest output-panel<cr>", "Toggle Panel" },
+    ["<leader>tu"] = { "<cmd>Neotest summary<cr>", "Toggle Summary" },
   }
 
   ---@diagnostic disable: missing-fields

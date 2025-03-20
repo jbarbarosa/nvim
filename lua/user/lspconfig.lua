@@ -69,14 +69,13 @@ function M.config()
     "lua_ls",
     "cssls",
     "html",
-    "tsserver",
+    "ts_ls",
     "bashls",
     "jsonls",
     "yamlls",
     "ruby_lsp",
     "gopls",
     "gofmt",
-    "jdtls"
   }
 
   local default_diagnostic_config = {
