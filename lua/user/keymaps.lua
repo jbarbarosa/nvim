@@ -43,25 +43,6 @@ keymap({ "n", "x" }, "j", "gj", opts)
 keymap({ "n", "x" }, "k", "gk", opts)
 keymap("n", "<leader>w", ":w<CR>", opts)
 
--- dap
-keymap("n", "<leader>dd", "<cmd> lua require('dapui').toggle()<CR>", opts)
-keymap("n", "<leader>db", "<cmd> lua require('dap').toggle_breakpoint()<CR>", opts)
-keymap("n", "<leader>dn", "<cmd> lua require('dap').step_over()<CR>", opts)
-keymap("n", "<leader>di", "<cmd> lua require('dap').step_into()<CR>", opts)
-keymap("n", "<leader>dc", "<cmd> lua require('dap').continue()<CR>", opts)
-keymap("n", "<leader>dC", "<cmd> lua require('dap').run_to_cursor()<CR>", opts)
-keymap("n", "<leader>dq", "<cmd> lua require('dap').terminate()<CR>", opts)
-keymap("n", "<leader>dt", "<cmd> lua require('dap-go').debug_test()<CR>", opts)
-keymap("n", "<leader>dl", "<cmd> lua require('dap-go').debug_last_test()<CR>", opts)
-keymap("n", "<leader>dB", function()
-  vim.ui.input({ prompt = "Breakpoint condition (leave empty for none): " }, function(input)
-    if input == nil or input == "" then
-      require("dap").toggle_breakpoint()
-    else
-      require("dap").set_breakpoint(input)
-    end
-  end)
-end, opts)
 vim.api.nvim_set_keymap("t", "<C-;>", "<C-\\><C-n>", opts)
 vim.keymap.set("n", "=", [[<cmd>vertical resize +5<cr>]]) -- make the window biger vertically
 vim.keymap.set("n", "-", [[<cmd>vertical resize -5<cr>]]) -- make the window smaller vertically
