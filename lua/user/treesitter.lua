@@ -20,6 +20,7 @@ function M.config()
       "markdown_inline",
       "bash",
       "go",
+      "sql",
       "ruby",
       "json",
       "javascript",

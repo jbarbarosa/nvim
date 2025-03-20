@@ -5,10 +5,10 @@ local M = {
 
 function M.config()
   local icons = require "user.icons"
-  local wk = require "which-key"
-  wk.register {
-    ["<leader>gg"] = { "<cmd>Neogit<CR>", "Neogit" },
-  }
+  require("which-key").add(
+    {"<leader>G", "<cmd>Neogit<CR>", desc = "Neogit" },
+    { mode = "n", prefix = "<leader>" }
+  )
 
   require("neogit").setup {
     auto_refresh = true,
