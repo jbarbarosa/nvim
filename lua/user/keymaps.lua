@@ -18,8 +18,6 @@ keymap("n", "n", "nzz", opts)
 keymap("n", "N", "Nzz", opts)
 keymap("n", "*", "*zz", opts)
 keymap("n", "#", "#zz", opts)
-keymap("n", "g*", "g*zz", opts)
-keymap("n", "g#", "g#zz", opts)
 
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)

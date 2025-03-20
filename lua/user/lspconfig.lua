@@ -34,7 +34,6 @@ function M.common_capabilities()
 end
 
 M.toggle_inlay_hints = function()
-  local bufnr = vim.api.nvim_get_current_buf()
   vim.lsp.inlay_hint.enable(true)
 end
 
@@ -71,7 +70,6 @@ function M.config()
     "yamlls",
     "ruby_lsp",
     "gopls",
-    "gofmt",
   }
 
   local default_diagnostic_config = {
