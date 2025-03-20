@@ -1,16 +1,19 @@
 local M = {
-  "WhoIsSethDaniel/mason-tool-installer.nvim" -- for jdtls
+  "WhoIsSethDaniel/mason-tool-installer.nvim", -- for jdtls
 }
 
 function M.config()
-  require("mason-tool-installer").setup({
+  require("mason-tool-installer").setup {
     ensure_installed = {
       "java-debug-adapter",
-      "java-test"
-    }
-  })
+      "java-test",
+      "gofmt",
+      "stylua",
+      "luarocks",
+    },
+  }
 
-  vim.api.nvim_command("MasonToolsInstall")
+  vim.api.nvim_command "MasonToolsInstall"
 end
 
 return M
