@@ -7,7 +7,6 @@ function M.config()
     ensure_installed = {
       "java-debug-adapter",
       "java-test",
-      "gofmt",
       "stylua",
       "luarocks",
     },
