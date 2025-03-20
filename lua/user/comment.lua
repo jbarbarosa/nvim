@@ -11,13 +11,15 @@ local M = {
 
 function M.config()
   local wk = require "which-key"
-  wk.register {
-    ["<leader>/"] = { "<Plug>(comment_toggle_linewise_current)", "Comment" },
+  local opts = {
+    mode = { "n", "v" }, -- NORMAL mode
+    prefix = "<leader>",
   }
 
-  wk.register {
-    ["<leader>/"] = { "<Plug>(comment_toggle_linewise_visual)", "Comment", mode = "v" },
-  }
+  wk.add({
+    "<leader>/", "<Plug>(comment_toggle_linewise_current)", desc = "Comment" },
+    opts
+  )
 
   vim.g.skip_ts_context_commentstring_module = true
   ---@diagnostic disable: missing-fields
