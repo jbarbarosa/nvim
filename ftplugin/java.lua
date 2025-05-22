@@ -9,19 +9,18 @@ if vim.fn.has "mac" == 1 then
 else
   system_os = "linux"
 end
-local jdk21_path = vim.fn.system("asdf where java openjdk-21.0.2"):gsub("\n", "")
-local jdk17_path = vim.fn.system("asdf where java openjdk-17.0.2"):gsub("\n", "")
+local jdk21_path = vim.fn.system("sdk home java 21.0.2-open"):gsub("\n", "")
+local jdk17_path = vim.fn.system("sdk home java 17.0.5-tem"):gsub("\n", "")
 
 -- Needed for debugging
 local bundles = {
   vim.fn.glob(home .. "/.local/share/nvim/mason/share/java-debug-adapter/com.microsoft.java.debug.plugin.jar"),
 }
 
--- Needed for running/debugging unit tests
 vim.list_extend(
   bundles,
   vim.split(
-    vim.fn.glob(home .. "/.local/share/nvim/mason/share/java-test/com.microsoft.java.test.plugin.jar", true),
+    vim.fn.glob(home .. "/.local/share/nvim/mason/share/java-test/*.jar", true),
     "\n"
   )
 )
@@ -31,7 +30,7 @@ local config = {
   -- The command that starts the language server
   -- See: https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line
   cmd = {
-    jdk21_path .. "/bin/java",
+    "java",
     "-Declipse.application=org.eclipse.jdt.ls.core.id1",
     "-Dosgi.bundles.defaultStartLevel=4",
     "-Declipse.product=org.eclipse.jdt.ls.core.product",
@@ -55,7 +54,9 @@ local config = {
 
   -- This is the default if not provided, you can remove it. Or adjust as needed.
   -- One dedicated LSP server & client will be started per unique root_dir
-  root_dir = require("jdtls.setup").find_root { ".git" },
+  root_dir = require("jdtls.setup").find_root({
+    ".git", "mvnw", "gradlew", "build.gradle", "pom.xml"
+  }),
 
   -- Here you can configure eclipse.jdt.ls specific settings
   -- See https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request

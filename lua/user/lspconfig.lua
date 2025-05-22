@@ -121,7 +121,9 @@ function M.config()
       require("neodev").setup {}
     end
 
-    lspconfig[server].setup(opts)
+    if server ~= "jdtls" then
+      lspconfig[server].setup(opts)
+    end
   end
 end
 
