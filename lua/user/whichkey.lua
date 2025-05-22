@@ -1,15 +1,19 @@
 local M = {
   "folke/which-key.nvim",
+  keys = {
+    { "<leader>q", "<cmd>confirm q<cr>",  desc = "Quit" },
+    { "<leader>h", "<cmd>nohlsearch<cr>", desc = "NOHL" },
+    { "<leader>v", "<cmd>vsplit<cr>",     desc = "Split (Vertical)" },
+  },
+  opts = {
+    mode = "n",
+    prefix = "<leader>",
+  }
 }
 
 function M.config()
-  local mappings = {
-    { "<leader>q", "<cmd>confirm q<CR>", desc = "Quit" },
-    { "<leader>h", "<cmd>nohlsearch<CR>", desc = "NOHL" },
-    { "<leader>v", "<cmd>vsplit<CR>", desc = "Split (Vertical)" },
-  }
-
   local which_key = require "which-key"
+
   which_key.setup {
     plugins = {
       marks = true,
@@ -41,13 +45,6 @@ function M.config()
       filetypes = { "TelescopePrompt" },
     },
   }
-
-  local opts = {
-    mode = "n", -- NORMAL mode
-    prefix = "<leader>",
-  }
-
-  which_key.add(mappings, opts)
 end
 
 return M
