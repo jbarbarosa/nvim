@@ -26,6 +26,7 @@ function M.config()
       "javascript",
       "typescript",
       "yaml",
+      "clojure",
     },
     sync_install = false,
     ignore_install = {},
