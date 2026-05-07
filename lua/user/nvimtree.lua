@@ -6,12 +6,15 @@ local M = {
 function M.config()
   local wk = require "which-key"
   wk.add({
-    {"<leader>e", "<cmd>NvimTreeToggle<CR>", desc = "Explorer" },
-  }, {mode = "n", prefix = "<leader>"})
+    { "<leader>e", "<cmd>NvimTreeToggle<CR>", desc = "Explorer" },
+  }, { mode = "n", prefix = "<leader>" })
 
   local icons = require "user.icons"
 
   require("nvim-tree").setup {
+    git = {
+      ignore = false, -- Show gitignored files by default
+    },
     hijack_netrw = false,
     sync_root_with_cwd = true,
     view = {

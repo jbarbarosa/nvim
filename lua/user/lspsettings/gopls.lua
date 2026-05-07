@@ -1,9 +1,7 @@
-local util = require "lspconfig.util"
-
 return {
   cmd = { "gopls" },
   filetypes = { "go", "gomod", "gowork", "gotmpl" },
-  root_dir = util.root_pattern("go.mod", ".git"),
+  root_markers = { "go.mod", ".git" },
   settings = {
     gopls = {
       completeUnimported = true,
