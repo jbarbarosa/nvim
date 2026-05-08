@@ -1,3 +1,4 @@
+vim.env.EDITOR = "nvim" -- ensure child processes (e.g. git commit from :terminal) use nvim
 vim.opt.backup = false -- creates a backup file
 vim.opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
 vim.opt.cmdheight = 1 -- more space in the neovim command line for displaying messages
