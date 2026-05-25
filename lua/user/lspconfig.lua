@@ -84,6 +84,7 @@ function M.config()
     "yamlls",
     "ruby_lsp",
     "gopls",
+    "clojure_lsp",
   }
 
   for _, server in ipairs(servers) do

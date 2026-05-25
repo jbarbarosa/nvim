@@ -15,6 +15,7 @@ function M.config()
     "bashls",
     "jsonls",
     "gopls",
+    "clojure_lsp",
   }
 
   require("mason").setup {
