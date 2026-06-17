@@ -2,13 +2,39 @@ local M = {
   "folke/which-key.nvim"
 }
 
+local find_go_mod_dir = function(start_path)
+  local dir = vim.fn.fnamemodify(start_path, ":h")
+  while dir ~= "/" and dir ~= "" do
+    if vim.fn.filereadable(dir .. "/go.mod") == 1 then
+      return dir
+    end
+    local parent = vim.fn.fnamemodify(dir, ":h")
+    if parent == dir then break end
+    dir = parent
+  end
+  return nil
+end
+
 local debug_function = function()
   return function()
     local ft = vim.bo.filetype
     if ft == "java" then
       require 'jdtls'.test_nearest_method()
     elseif ft == "go" then
-      require('dap-go').debug_test()
+      local file = vim.fn.expand("%:p")
+      local module_dir = find_go_mod_dir(file)
+      if module_dir then
+        local file_dir = vim.fn.fnamemodify(file, ":h")
+        local relative = file_dir:sub(#module_dir + 2)
+        if relative == "" then relative = "." end
+        require('dap-go').debug_test({
+          cwd = file_dir,
+          program = "./" .. relative,
+          dlvCwd = module_dir,
+        })
+      else
+        require('dap-go').debug_test()
+      end
     else
       error("filetype not configured: " .. ft)
     end
